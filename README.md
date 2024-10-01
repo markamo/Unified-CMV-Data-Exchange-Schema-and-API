@@ -1,4 +1,4 @@
-![CMV Project Logo](scr/images/modot_cmv_logo_normal.png)
+![CMV Project Logo](src/images/modot_cmv_logo_normal.png)
 
 
 # MoDOT Unified Commercial Motor Vehicle (CMV) Data Exchange Schema and API
