@@ -1,0 +1,449 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Unified API Schema",
+    "type": "object",
+    "properties": {
+        "schema_info": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "release_date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mode": {
+                    "type": "string",
+                    "enum": [
+                        "raw",
+                        "group"
+                    ]
+                },
+                "notes": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "version",
+                "release_date",
+                "mode"
+            ]
+        },
+        "data_sources": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "update_frequency": {
+                        "type": "integer"
+                    },
+                    "update_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "license": {
+                        "type": "string"
+                    },
+                    "source_url": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "source_id",
+                    "publisher",
+                    "version",
+                    "update_frequency",
+                    "update_date",
+                    "license"
+                ]
+            }
+        },
+        "incidents": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "class_info": {
+                        "type": "object",
+                        "properties": {
+                            "class_id": {
+                                "type": "string"
+                            },
+                            "incident_class": {
+                                "type": "string"
+                            },
+                            "subclass": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "class_id",
+                            "incident_class"
+                        ]
+                    },
+                    "time_info": {
+                        "type": "object",
+                        "properties": {
+                            "start_time": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "end_time": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "estimated_duration": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "start_time"
+                        ]
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "administrative_info": {
+                                "type": "object",
+                                "properties": {
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "county": {
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "direction": {
+                                        "type": "string"
+                                    },
+                                    "impacted_roadways": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "city",
+                                    "county",
+                                    "direction"
+                                ]
+                            },
+                            "geospatial_info": {
+                                "type": "object",
+                                "properties": {
+                                    "geometry_type": {
+                                        "type": "string"
+                                    },
+                                    "geometry": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "minItems": 2,
+                                            "maxItems": 2
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "geometry_type",
+                                    "geometry"
+                                ]
+                            }
+                        }
+                    },
+                    "incident_details": {
+                        "type": "object",
+                        "properties": {
+                            "event": {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "object",
+                                        "properties": {
+                                            "main": {
+                                                "type": "string"
+                                            },
+                                            "sub": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "main"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "code",
+                                    "type",
+                                    "value"
+                                ]
+                            },
+                            "impact": {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "object",
+                                        "properties": {
+                                            "main": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "main"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "code",
+                                    "type",
+                                    "value"
+                                ]
+                            },
+                            "severity": {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "object",
+                                        "properties": {
+                                            "main": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "main"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "code",
+                                    "type",
+                                    "value"
+                                ]
+                            }
+                        }
+                    },
+                    "source_info": {
+                        "type": "object",
+                        "properties": {
+                            "source_id": {
+                                "type": "string"
+                            },
+                            "source_type": {
+                                "type": "string"
+                            },
+                            "source_timestamp": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        },
+                        "required": [
+                            "source_id"
+                        ]
+                    },
+                    "verification_info": {
+                        "type": "object",
+                        "properties": {
+                            "verified_status": {
+                                "type": "boolean"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "review_status": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "additional_info": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "notes": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "name",
+                                "value",
+                                "type"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "class_info",
+                    "time_info",
+                    "location",
+                    "incident_details",
+                    "source_info"
+                ]
+            }
+        },        
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "request_id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "summary": {
+                    "type": "object",
+                    "properties": {
+                        "total_incidents": {
+                            "type": "integer"
+                        },
+                        "total_workzones": {
+                            "type": "integer"
+                        },
+                        "total_waze_jams": {
+                            "type": "integer"
+                        },
+                        "total_waze_incidents": {
+                            "type": "integer"
+                        },
+                        "total_transcore_incidents": {
+                            "type": "integer"
+                        },
+                        "total_weather": {
+                            "type": "integer"
+                        }
+                    },
+                "routes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "route_id": {
+                                    "type": "string"
+                                },
+                                "coordinates": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    }
+                                },
+                                "drive_coordinates": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    }
+                                }
+                            },
+                            "required": [
+                                "route_id",
+                                "coordinates",
+                                "drive_coordinates"
+                            ]
+                        },
+                        "default": []
+                    },
+                    "required": [
+                        "total_incidents",
+                        "total_workzones",
+                        "total_waze_jams",
+                        "total_waze_incidents",
+                        "total_transcore_incidents",
+                        "total_weather"
+                    ]
+                }
+            },
+            "required": [
+                "request_id",
+                "status",
+                "summary"
+            ]
+        }
+    },
+    "required": [
+        "schema_info",
+        "data_sources",
+        "incidents",
+        "routes",
+        "metadata"
+    ]
+}
