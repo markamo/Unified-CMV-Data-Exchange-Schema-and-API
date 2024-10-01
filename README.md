@@ -3,6 +3,16 @@
 
 # MoDOT Unified Commercial Motor Vehicle (CMV) Data Exchange Schema and API
 
+The **MoDOT Unified Commercial Motor Vehicle (CMV) Data Exchange Schema and API** aims to enhance the safety and efficiency of CMVs by providing a unified access point to a wide range of real-time data streams. This project focuses on consolidating essential information, such as traffic conditions, work zone activity, parking availability, and weather reports, into a standardized, cohesive platform for use by commercial motor vehicles and their operators.
+
+Much like the **Work Zone Data Exchange (WZDx) Specification**, this project simplifies access to vital data for CMVs, enabling third-party systems, such as fleet management software and navigation tools, to ingest and utilize up-to-date information. This harmonized approach minimizes delays, reduces data inconsistencies, and improves situational awareness, allowing CMVs to make better-informed decisions on the road.
+
+### Key Features of the Unified API:
+- **Real-Time Data Integration**: Combines diverse data sources, including work zone information, incidents, weather, parking, and traffic conditions.
+- **Standardized Data Schema**: The API follows a consistent structure, making data more accessible for third-party developers and CMV operators.
+- **Enhanced Interoperability**: Ensures seamless communication across various data sources, reducing operational risks and improving efficiency.
+- **Secure, Efficient Communication**: Implements robust security protocols to protect sensitive information and maintain data integrity.
+- **Customizable API Responses**: Allows users to query and filter data based on their specific needs, such as route optimization or real-time incident reporting.
 
 
 
